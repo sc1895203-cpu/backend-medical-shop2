@@ -9,7 +9,9 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin:"https://medical-shop-b1vk.vercel.app"
+}));
 app.use(express.json());
 
 app.use(express.static(__dirname));
@@ -104,6 +106,7 @@ app.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
       
+
 
 
 
