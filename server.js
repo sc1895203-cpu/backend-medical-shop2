@@ -15,11 +15,12 @@ app.use(express.static(__dirname));
 
 // MySQL Connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Priyanka@7880",
-  database: "shubham",
-  port:3306,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: 3306
+});
 //authPlugins: {
    // mysql_clear_password: () => Buffer.from("YOUR_PASSWORD" + "\0"),
  // }
@@ -80,4 +81,5 @@ app.post("/order", (req, res) => {
       res.send("Order saved but failed to send WhatsApp message.");
     });
 });
+
 
