@@ -26,7 +26,7 @@ const db = mysql.createConnection({
 //authPlugins: {
    // mysql_clear_password: () => Buffer.from("YOUR_PASSWORD" + "\0"),
  // }
-});
+
 
 
 db.connect((err) => {
@@ -105,6 +105,7 @@ app.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
       
+
 
 
 
