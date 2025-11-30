@@ -106,7 +106,23 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
+app.get("/create-table", (req, res) => {
+  const sql = `
+    CREATE TABLE IF NOT EXISTS products (
+      name VARCHAR(255),
+      price INT,
+      description TEXT,
+      image VARCHAR(500)
+    );
+  `;
+
+  db.query(sql, (err) => {
+    if (err) return res.send(err);
+    res.send("Products table created!");
+  });
+});
       
+
 
 
 
