@@ -39,6 +39,23 @@ db.connect((err) => {
   }
 });
 
+app.get("/create-table", (req, res) => {
+  const sql = `
+    CREATE TABLE IF NOT EXISTS products (
+      name VARCHAR(255),
+      price INT,
+      description TEXT,
+      image VARCHAR(500)
+    );
+  `;
+
+  db.query(sql, (err) => {
+    if (err) return res.send(err);
+    res.send("Products table created!");
+  });
+});
+      
+
 // Search API
 app.get("/search", (req, res) => {
   const q = req.query.q;
@@ -102,30 +119,10 @@ Address: ${address}`;
     });
 });
 const PORT = process.env.PORT || 5000;
-
-app.get("/create-table", (req, res) => {
-  const sql = `
-    CREATE TABLE IF NOT EXISTS products (
-      name VARCHAR(255),
-      price INT,
-      description TEXT,
-      image VARCHAR(500)
-    );
-  `;
-
-  db.query(sql, (err) => {
-    if (err) return res.send(err);
-    res.send("Products table created!");
-  });
-});
-      
-
-
-
-
 app.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
+
 
 
 
