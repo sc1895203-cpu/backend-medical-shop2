@@ -10,7 +10,8 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors({
-  origin:"https://medical-shop-b1vk.vercel.app"
+  origin:"https://medical-shop-b1vk.vercel.app",
+  methods:["GET","POST"],
 }));
 app.use(express.json());
 
@@ -106,6 +107,7 @@ app.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
       
+
 
 
 
